@@ -1,0 +1,104 @@
+definitions:
+  models.Item:
+    properties:
+      price:
+        type: string
+      shortDescription:
+        type: string
+    type: object
+  models.Receipt:
+    properties:
+      items:
+        items:
+          $ref: '#/definitions/models.Item'
+        type: array
+      purchaseDate:
+        type: string
+      purchaseTime:
+        type: string
+      retailer:
+        type: string
+      total:
+        type: string
+    type: object
+  routes.HealthResponse:
+    properties:
+      status:
+        type: string
+      uptime:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /health:
+    get:
+      description: Returns application uptime and status
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/routes.HealthResponse'
+      summary: Check health of the API
+      tags:
+      - Health
+  /receipts/{id}/points:
+    get:
+      description: Returns points for a given receipt ID
+      parameters:
+      - description: Receipt ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: integer
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get points for a receipt
+      tags:
+      - Receipts
+  /receipts/process:
+    post:
+      consumes:
+      - application/json
+      description: Submits a receipt and returns a unique ID
+      parameters:
+      - description: Receipt JSON
+        in: body
+        name: receipt
+        required: true
+        schema:
+          $ref: '#/definitions/models.Receipt'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Process a receipt and generate an ID
+      tags:
+      - Receipts
+swagger: "2.0"
