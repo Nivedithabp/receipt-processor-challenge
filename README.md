@@ -74,14 +74,20 @@ go run main.go
 ## Render Deployment
 ### Live API Hosted on Render:
 
+[Github Pages](https://nivedithabp.github.io/)
 [Receipt Processor API](https://receipt-processor-challenge-latest.onrender.com/swagger/index.html)
 
 
-## Screenshots
+# Screenshots
 
-<img width="1440" alt="Screenshot 2025-03-28 at 8 02 47 AM" src="https://github.com/user-attachments/assets/37150990-2894-4b11-ba2e-c6fb58cc73b5" />
+## Frontend(github pages)
+<img width="1000" alt="Screenshot 2025-03-28 at 8 39 38 AM" src="https://github.com/user-attachments/assets/c8af7793-6a2f-4c63-92d8-5ea3ff32ca20" />
+
+## Swagger
+
+<img width="1000" alt="Screenshot 2025-03-28 at 8 02 47 AM" src="https://github.com/user-attachments/assets/37150990-2894-4b11-ba2e-c6fb58cc73b5" />
 <img width="519" alt="Screenshot 2025-03-28 at 8 04 14 AM" src="https://github.com/user-attachments/assets/9e84b628-5607-4a57-b396-1642a0c8952f" />
-<img width="1145" alt="Screenshot 2025-03-28 at 8 05 32 AM" src="https://github.com/user-attachments/assets/ab396b5f-3ad7-4c4b-9171-d92ee7b3244f" />
+<img width="1000" alt="Screenshot 2025-03-28 at 8 05 32 AM" src="https://github.com/user-attachments/assets/ab396b5f-3ad7-4c4b-9171-d92ee7b3244f" />
 
 
 
