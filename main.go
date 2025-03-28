@@ -8,6 +8,7 @@ import (
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	httpSwagger "github.com/swaggo/http-swagger"
+	_ "github.com/Nivedithabp/receipt-processor-challenge/docs"
 	"github.com/spf13/viper"
 	"github.com/Nivedithabp/receipt-processor-challenge/routes"
 )
