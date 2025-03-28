@@ -6,7 +6,7 @@
       "allowedOrigins": ["*"]
     },
     "swagger": {
-      "url": "https://receipt-processor-challenge.vercel.app/swagger/index.html"
+      "url": "https://localhost:8080/swagger/index.html"
     }
   }
   
