@@ -37,13 +37,26 @@ func RegisterRoutes(router *mux.Router) {
 func ProcessReceiptHandler(w http.ResponseWriter, r *http.Request) {
 	var receipt models.Receipt
 	err := json.NewDecoder(r.Body).Decode(&receipt)
-	if err != nil {
-		http.Error(w, "Invalid request payload", http.StatusBadRequest)
+	if err != nil || !isValidReceipt(receipt) {
+		http.Error(w, `{"error": "Invalid request payload"}`, http.StatusBadRequest)
 		return
 	}
 
 	id := services.ProcessReceipt(receipt)
+	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(map[string]string{"id": id})
+}
+
+// isValidReceipt validates required fields in the receipt
+func isValidReceipt(receipt models.Receipt) bool {
+	if receipt.Retailer == "" ||
+		receipt.PurchaseDate == "" ||
+		receipt.PurchaseTime == "" ||
+		len(receipt.Items) == 0 ||
+		receipt.Total == "" {
+		return false
+	}
+	return true
 }
 
 // @Summary Get points for a receipt

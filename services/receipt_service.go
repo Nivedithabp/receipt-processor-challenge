@@ -16,7 +16,7 @@ var receipts = make(map[string]int)
 // ProcessReceipt processes the receipt and generates an ID
 func ProcessReceipt(receipt models.Receipt) string {
 	id := uuid.New().String()
-	points := calculatePoints(receipt)
+	points := CalculatePoints(receipt)
 	receipts[id] = points
 	return id
 }
@@ -28,7 +28,7 @@ func GetPoints(id string) (int, bool) {
 }
 
 // calculatePoints calculates the points based on rules
-func calculatePoints(receipt models.Receipt) int {
+func CalculatePoints(receipt models.Receipt) int {
 	points := 0
 
 	// 1. One point per alphanumeric character in retailer name
