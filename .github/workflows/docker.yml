@@ -50,7 +50,7 @@ jobs:
 
       # Step 6: Upload test coverage report
       - name: Upload Test Coverage Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: coverage.out
@@ -68,7 +68,7 @@ jobs:
 
       # Step 9: Build and push Docker image to Docker Hub
       - name: 🚀 Build and Push Docker Image
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: .
           file: Dockerfile
@@ -77,9 +77,3 @@ jobs:
             ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
             ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
 
-      # Step 10: Save Docker image as artifact
-      - name: Save Docker Image as Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: docker-image
-          path: /tmp/docker-image.tar
