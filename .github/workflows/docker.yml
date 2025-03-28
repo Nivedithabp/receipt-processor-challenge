@@ -67,7 +67,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       # Step 9: Build and push Docker image to Docker Hub
-      - name: 🚀 Build and Push Docker Image
+      - name: Build and Push Docker Image
         uses: docker/build-push-action@v4
         with:
           context: .
@@ -77,3 +77,12 @@ jobs:
             ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
             ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
 
+  deploy:
+    name: Deploy to Render
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      # Step 1: Trigger Deploy Hook in Render
+      - name: Trigger Deploy Hook in Render
+        run: |
+          curl -X POST "https://api.render.com/deploy/srv-cvj87qmr433s73ai33tg?key=RBP1Aa3IMUs"
