@@ -31,7 +31,7 @@ jobs:
 
       # Step 3: Cache Go modules to speed up builds
       - name: Cache Go Modules
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/go/pkg/mod
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
